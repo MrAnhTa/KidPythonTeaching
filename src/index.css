@@ -1,0 +1,126 @@
+:root {
+  --primary: #FF6B6B;
+  --primary-hover: #ff5252;
+  --secondary: #4ECDC4;
+  --accent: #FFE66D;
+  --background: #F7FFF7;
+  --text: #2D3047;
+  --card-bg: #ffffff;
+  --border: rgba(0,0,0,0.1);
+  --code-bg: #1e1e24;
+  --code-text: #f8f8f2;
+}
+
+[data-theme="dark"] {
+  --primary: #FF6B6B;
+  --primary-hover: #ff8787;
+  --secondary: #4ECDC4;
+  --accent: #FFE66D;
+  --background: #1A1B26;
+  --text: #E0E2EA;
+  --card-bg: #24283B;
+  --border: rgba(255,255,255,0.1);
+  --code-bg: #000000;
+  --code-text: #f8f8f2;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Outfit', sans-serif;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+.glass-panel {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+}
+
+.animated-gradient-text {
+  background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.lesson-card {
+  padding: 24px;
+  margin-bottom: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lesson-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+}
+
+.code-container {
+  background-color: var(--code-bg);
+  color: var(--code-text);
+  padding: 20px;
+  border-radius: 12px;
+  font-family: 'Courier New', Courier, monospace;
+  overflow-x: auto;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin: 16px 0;
+}
+
+.keyword { color: #ff79c6; }
+.string { color: #f1fa8c; }
+.comment { color: #6272a4; }
+.function { color: #50fa7b; }
+.variable { color: #8be9fd; }
