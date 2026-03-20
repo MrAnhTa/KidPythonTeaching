@@ -48,6 +48,14 @@ const Intro = () => {
             Start Learning <Play size={20} />
           </button>
         </Link>
+        
+        <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
+          <Link to="/variables">
+            <button className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '10px', background: 'var(--secondary)' }}>
+              Next: Variables <Play size={20} />
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   )

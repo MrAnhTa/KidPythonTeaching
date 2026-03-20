@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import CodeBlock from '../components/CodeBlock'
+import { Play } from 'lucide-react'
 
 const LessonLogic = () => {
   const [password, setPassword] = useState('')
@@ -70,6 +72,14 @@ else:
         <CodeBlock code={`# Print something 5 times!
 for i in range(5):
     print("I love coding!")`} />
+      </div>
+
+      <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
+        <Link to="/math">
+          <button className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '10px', background: 'var(--primary)' }}>
+            Next: Math & Words <Play size={20} />
+          </button>
+        </Link>
       </div>
     </div>
   )

@@ -1,8 +1,22 @@
+import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Sun, Moon, Code } from 'lucide-react'
+import { Sun, Moon, Code, Menu, X } from 'lucide-react'
 
 const Navbar = ({ toggleTheme, currentTheme }) => {
   const location = useLocation()
+  const [isOpen, setIsOpen] = useState(false)
+
+  const navLinks = [
+    { path: '/', label: 'Home', color: 'var(--primary)' },
+    { path: '/intro', label: 'Intro', color: '#9D4EDD' },
+    { path: '/variables', label: 'Variables', color: 'var(--secondary)' },
+    { path: '/math', label: 'Math', color: 'var(--primary)' },
+    { path: '/logic', label: 'Logic', color: 'var(--accent)' },
+    { path: '/lists', label: 'Lists', color: '#FF9F1C' },
+    { path: '/functions', label: 'Functions', color: '#FF6B6B' },
+    { path: '/madlibs', label: 'Madlibs', color: '#E85D04' },
+    { path: '/exercises', label: 'Exercises', color: '#FFD700' }
+  ]
 
   return (
     <nav style={{
@@ -37,71 +51,21 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
         </h1>
       </Link>
 
-      <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
-        <Link to="/" style={{
-          fontWeight: 600,
-          color: location.pathname === '/' ? 'var(--primary)' : 'var(--text)',
-          borderBottom: location.pathname === '/' ? '3px solid var(--primary)' : '3px solid transparent',
-          paddingBottom: '5px',
-          transition: 'all 0.2s'
-        }}>Home</Link>
-        <Link to="/intro" style={{
-          fontWeight: 600,
-          color: location.pathname === '/intro' ? '#9D4EDD' : 'var(--text)',
-          borderBottom: location.pathname === '/intro' ? '3px solid #9D4EDD' : '3px solid transparent',
-          paddingBottom: '5px',
-          transition: 'all 0.2s'
-        }}>Intro</Link>
-        <Link to="/variables" style={{
-          fontWeight: 600,
-          color: location.pathname === '/variables' ? 'var(--secondary)' : 'var(--text)',
-          borderBottom: location.pathname === '/variables' ? '3px solid var(--secondary)' : '3px solid transparent',
-          paddingBottom: '5px',
-          transition: 'all 0.2s'
-        }}>Variables</Link>
-        <Link to="/math" style={{
-          fontWeight: 600,
-          color: location.pathname === '/math' ? 'var(--primary)' : 'var(--text)',
-          borderBottom: location.pathname === '/math' ? '3px solid var(--primary)' : '3px solid transparent',
-          paddingBottom: '5px',
-          transition: 'all 0.2s'
-        }}>Math</Link>
-        <Link to="/logic" style={{
-          fontWeight: 600,
-          color: location.pathname === '/logic' ? 'var(--accent)' : 'var(--text)',
-          borderBottom: location.pathname === '/logic' ? '3px solid var(--accent)' : '3px solid transparent',
-          paddingBottom: '5px',
-          transition: 'all 0.2s'
-        }}>Logic</Link>
-        <Link to="/lists" style={{
-          fontWeight: 600,
-          color: location.pathname === '/lists' ? '#FF9F1C' : 'var(--text)',
-          borderBottom: location.pathname === '/lists' ? '3px solid #FF9F1C' : '3px solid transparent',
-          paddingBottom: '5px',
-          transition: 'all 0.2s'
-        }}>Lists</Link>
-        <Link to="/functions" style={{
-          fontWeight: 600,
-          color: location.pathname === '/functions' ? '#FF6B6B' : 'var(--text)',
-          borderBottom: location.pathname === '/functions' ? '3px solid #FF6B6B' : '3px solid transparent',
-          paddingBottom: '5px',
-          transition: 'all 0.2s'
-        }}>Functions</Link>
-        <Link to="/madlibs" style={{
-          fontWeight: 600,
-          color: location.pathname === '/madlibs' ? '#E85D04' : 'var(--text)',
-          borderBottom: location.pathname === '/madlibs' ? '3px solid #E85D04' : '3px solid transparent',
-          paddingBottom: '5px',
-          transition: 'all 0.2s'
-        }}>Madlibs</Link>
-        <Link to="/exercises" style={{
-          fontWeight: 600,
-          color: location.pathname === '/exercises' ? '#FFD700' : 'var(--text)',
-          borderBottom: location.pathname === '/exercises' ? '3px solid #FFD700' : '3px solid transparent',
-          paddingBottom: '5px',
-          transition: 'all 0.2s'
-        }}>Exercises</Link>
+      <div className="nav-desktop-links" style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
+        {navLinks.map((link) => (
+          <Link key={link.path} to={link.path} style={{
+            fontWeight: 600,
+            color: location.pathname === link.path ? link.color : 'var(--text)',
+            borderBottom: location.pathname === link.path ? `3px solid ${link.color}` : '3px solid transparent',
+            paddingBottom: '5px',
+            transition: 'all 0.2s',
+            display: window.innerWidth > 768 ? 'block' : 'none'
+          }}>{link.label}</Link>
+        ))}
         
+        <button className="mobile-menu-btn" onClick={() => setIsOpen(!isOpen)} style={{ background: 'transparent', border: 'none', color: 'var(--text)', display: 'none' }}>
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
         <button 
           onClick={toggleTheme}
           style={{
@@ -121,6 +85,33 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
           {currentTheme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
         </button>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isOpen && (
+        <div style={{
+          position: 'absolute',
+          top: '80px',
+          left: 0,
+          right: 0,
+          background: 'var(--card-bg)',
+          borderBottom: '1px solid var(--border)',
+          display: 'flex',
+          flexDirection: 'column',
+          padding: '20px',
+          gap: '15px',
+          boxShadow: '0 10px 20px rgba(0,0,0,0.1)'
+        }}>
+          {navLinks.map((link) => (
+            <Link key={link.path} to={link.path} onClick={() => setIsOpen(false)} style={{
+              fontWeight: 600,
+              color: location.pathname === link.path ? link.color : 'var(--text)',
+              fontSize: '1.2rem'
+            }}>
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      )}
     </nav>
   )
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import CodeBlock from '../components/CodeBlock'
-import { Bot, Zap } from 'lucide-react'
+import { Bot, Zap, Play } from 'lucide-react'
 
 const LessonFunctions = () => {
   const [robotName, setRobotName] = useState('BeepBoop')
@@ -68,6 +69,14 @@ say_hello() # We can use it as many times as we want!`} />
             {'>'} {robotAction || 'Waiting for function call...'}
           </div>
         </div>
+      </div>
+
+      <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
+        <Link to="/madlibs">
+          <button className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '10px', background: '#E85D04' }}>
+            Next: Project Madlibs <Play size={20} />
+          </button>
+        </Link>
       </div>
     </div>
   )

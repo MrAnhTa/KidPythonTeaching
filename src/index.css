@@ -124,3 +124,12 @@ button {
 .comment { color: #6272a4; }
 .function { color: #50fa7b; }
 .variable { color: #8be9fd; }
+
+@media (max-width: 768px) {
+  .nav-desktop-links {
+    display: none !important;
+  }
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+}

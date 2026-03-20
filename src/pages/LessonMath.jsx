@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import CodeBlock from '../components/CodeBlock'
-import { Calculator } from 'lucide-react'
+import { Calculator, Play } from 'lucide-react'
 
 const LessonMath = () => {
   const [num1, setNum1] = useState(5)
@@ -78,6 +79,14 @@ second_word = "Hero"
 # String addition!
 print(first_word + second_word)
 # Outputs: SuperHero`} />
+      </div>
+
+      <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
+        <Link to="/lists">
+          <button className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '10px', background: '#FF9F1C' }}>
+            Next: Lists <Play size={20} />
+          </button>
+        </Link>
       </div>
     </div>
   )

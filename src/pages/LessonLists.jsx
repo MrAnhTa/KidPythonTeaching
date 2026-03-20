@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import CodeBlock from '../components/CodeBlock'
-import { Plus, Trash2 } from 'lucide-react'
+import { Plus, Trash2, Play } from 'lucide-react'
 
 const LessonLists = () => {
   const [inventory, setInventory] = useState(['Sword 🗡️', 'Shield 🛡️', 'Potion 🧪'])
@@ -78,6 +79,14 @@ backpack.append("Map")`} />
           ))}
           <div style={{ color: '#8be9fd' }}>]</div>
         </div>
+      </div>
+
+      <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
+        <Link to="/functions">
+          <button className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '10px', background: '#FF6B6B' }}>
+            Next: Functions <Play size={20} />
+          </button>
+        </Link>
       </div>
     </div>
   )

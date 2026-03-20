@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import CodeBlock from '../components/CodeBlock'
+import { Play } from 'lucide-react'
 
 const LessonMadlibs = () => {
   const [words, setWords] = useState({
@@ -77,6 +79,14 @@ print(story)`} />
             {'>'} {story}
           </div>
         )}
+      </div>
+
+      <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
+        <Link to="/exercises">
+          <button className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '10px', background: '#FFD700', color: '#000', border: 'none' }}>
+            Next: Final Exercises <Play size={20} />
+          </button>
+        </Link>
       </div>
     </div>
   )

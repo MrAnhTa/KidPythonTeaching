@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import CodeBlock from '../components/CodeBlock'
 import { CheckCircle, Play } from 'lucide-react'
 
@@ -91,6 +92,14 @@ print(score)`} />
             Oops! Think about how you read a book (left to right). The label comes first, then what you put inside it! Try again.
           </div>
         )}
+      </div>
+
+      <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
+        <Link to="/logic">
+          <button className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '10px', background: 'var(--accent)' }}>
+            Next: Logic <Play size={20} />
+          </button>
+        </Link>
       </div>
     </div>
   )
