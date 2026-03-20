@@ -40,6 +40,18 @@ function App() {
             <Route path="/exercises" element={<Exercises />} />
           </Routes>
         </main>
+        <footer style={{
+          position: 'fixed',
+          bottom: '10px',
+          right: '20px',
+          fontStyle: 'italic',
+          opacity: 0.7,
+          fontSize: '0.9rem',
+          zIndex: 1000,
+          pointerEvents: 'none'
+        }}>
+          By Adam Ta with love for my son ChipChip - Jeremy
+        </footer>
       </div>
     </Router>
   )
